@@ -32,9 +32,6 @@ class App extends Component {
             word={words[this.state.wordIndex]}
             onSuccess={this.handleSuccess}
           />
-          {this.state.success &&
-            <div>YAY!</div>
-          }
         </div>
       </div>
     );

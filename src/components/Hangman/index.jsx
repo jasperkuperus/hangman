@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import _ from 'lodash';
+import HangingMan from '../HangingMan';
 
 class Hangman extends Component {
   static propTypes = {
@@ -64,12 +65,20 @@ class Hangman extends Component {
     );
   }
 
+  calculateErrors() {
+    return _.difference(this.state.guesses, this.state.letters).length;
+  }
+
   render() {
     const word = this.props.word.toLowerCase();
 
     return (
       <div className="hangman">
-        {word.split('').map(this.renderLetter)}
+        <HangingMan errors={this.calculateErrors()} />
+
+        <div className="letters">
+          {word.split('').map(this.renderLetter)}
+        </div>
       </div>
     );
   }

@@ -1,4 +1,8 @@
 .hangman {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .letter {
     display: inline-block;
     font-size: 30px;

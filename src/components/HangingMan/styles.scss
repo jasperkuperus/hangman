@@ -1,0 +1,42 @@
+.hanging-man {
+  width: 300px;
+  height: 400px;
+  position: relative;
+
+  .hanging-man-part {
+    position: absolute;
+    background-color: black;
+
+    &.invisible {
+      display: none;
+    }
+
+    &.hanging-man-top {
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 2px;
+    }
+
+    &.hanging-man-rope {
+      top: 0;
+      left: 150px;
+      width: 2px;
+      height: 25px;
+    }
+
+    &.hanging-man-pole {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+    }
+
+    &.hanging-man-base {
+      bottom: 0;
+      left: 0;
+      right: 50px;
+      height: 2px;
+    }
+  }
+}
