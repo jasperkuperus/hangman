@@ -1,0 +1,16 @@
+.alphabet {
+  width: 300px;
+  text-align: center;
+
+  .letter {
+    display: inline-block;
+    font-size: 20px;
+    margin: 5px;
+    font-variant: small-caps;
+    color: rgba(0, 0, 0, 0.2);
+
+    &.guessed {
+      color: black;
+    }
+  }
+}

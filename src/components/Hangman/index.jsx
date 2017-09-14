@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import _ from 'lodash';
 import HangingMan from '../HangingMan';
+import Alphabet from '../Alphabet';
 
 class Hangman extends Component {
   static propTypes = {
@@ -59,7 +60,7 @@ class Hangman extends Component {
     const letterAvailable = guesses.includes(letter);
 
     return (
-      <div key={index} className={classNames('letter', { letter_available: letterAvailable })}>
+      <div key={index} className={classNames('word-letter', { letter_available: letterAvailable })}>
         { letterAvailable ? letter : '_'}
       </div>
     );
@@ -71,14 +72,20 @@ class Hangman extends Component {
 
   render() {
     const word = this.props.word.toLowerCase();
+    const { guesses } = this.state;
 
     return (
       <div className="hangman">
         <HangingMan errors={this.calculateErrors()} />
 
+        {/* FIXME: This to its own component! */}
         <div className="letters">
           {word.split('').map(this.renderLetter)}
         </div>
+
+        <Alphabet
+          guessedLetters={guesses}
+        />
       </div>
     );
   }
