@@ -6,6 +6,11 @@
   ],
   "rules": {
     "class-methods-use-this": [0],
+    "react/jsx-closing-bracket-location": [2, {
+      "selfClosing": "line-aligned",
+      "nonEmpty": "after-props"
+    }],
+    "react/forbid-prop-types": [1, { "forbid": ["any"] }]
   },
   "globals": {
     "document": true,

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import _ from 'lodash';
 import HangingMan from '../HangingMan';
 import Alphabet from '../Alphabet';
+import Word from '../Word';
 
 class Hangman extends Component {
   static propTypes = {
@@ -17,21 +17,21 @@ class Hangman extends Component {
     this.state = this.createInitialState(props.word);
 
     this.keyListener = this.keyListener.bind(this);
-    this.renderLetter = this.renderLetter.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener('keydown', this.keyListener);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.keyListener);
-  }
-
   componentDidUpdate() {
     if (this.state.word !== this.props.word) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState(this.createInitialState(this.props.word));
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.keyListener);
   }
 
   createInitialState(word) {
@@ -55,17 +55,6 @@ class Hangman extends Component {
     }
   }
 
-  renderLetter(letter, index) {
-    const { guesses } = this.state;
-    const letterAvailable = guesses.includes(letter);
-
-    return (
-      <div key={index} className={classNames('word-letter', { letter_available: letterAvailable })}>
-        { letterAvailable ? letter : '_'}
-      </div>
-    );
-  }
-
   calculateErrors() {
     return _.difference(this.state.guesses, this.state.letters).length;
   }
@@ -78,10 +67,10 @@ class Hangman extends Component {
       <div className="hangman">
         <HangingMan errors={this.calculateErrors()} />
 
-        {/* FIXME: This to its own component! */}
-        <div className="letters">
-          {word.split('').map(this.renderLetter)}
-        </div>
+        <Word
+          word={word}
+          guessedLetters={guesses}
+        />
 
         <Alphabet
           guessedLetters={guesses}
