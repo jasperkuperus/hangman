@@ -6,8 +6,24 @@
   $pole-width: 4px;
   $pole-margin: 40px;
   $pole-top-width: 150px;
+  $pole-rope-height: 25px;
 
-  .hanging-man-part {
+  $face-width: 55px;
+  $face-height: 100px;
+
+  $body-width: $pole-width;
+  $neck-height: 15px;
+  $body-hand-length: 40px;
+  $body-hand-translation: 20deg;
+  $spine-height: 100px;
+  $body-leg-length: 50px;
+  $body-leg-translation: 140deg;
+  $penis-length: -5px;
+
+  /**
+   * Structure for hanging our man...
+   */
+  .pole-part {
     position: absolute;
     background-color: black;
 
@@ -19,7 +35,7 @@
       top: 0;
       left: $pole-margin + $pole-top-width;
       width: $pole-width;
-      height: 25px;
+      height: $pole-rope-height;
     }
 
     &.hanging-man-top {
@@ -50,6 +66,72 @@
       left: 0;
       right: 0;
       height: $pole-width;
+    }
+  }
+
+  /**
+   * The actual man
+   */
+  .man-part {
+    position: absolute;
+
+    &.invisible {
+      display: none;
+    }
+
+    &.hanging-man-face {
+      top: $pole-rope-height;
+      left: $pole-margin + $pole-top-width - ($face-width / 2);
+    }
+
+    &.body-part {
+      background-color: black;
+
+      &.hanging-man-neck {
+        top: $pole-rope-height + $face-height;
+        left: $pole-margin + $pole-top-width;
+        width: $body-width;
+        height: $neck-height;
+      }
+
+      &.hanging-man-hand-left {
+        top: $pole-rope-height + $face-height + $neck-height - $body-width;
+        left: $pole-margin + $pole-top-width - $body-hand-length + $body-width;
+        height: $body-width;
+        width: $body-hand-length;
+        transform: rotate($body-hand-translation);
+      }
+
+      &.hanging-man-hand-right {
+        top: $pole-rope-height + $face-height + $neck-height - $body-width;
+        left: $pole-margin + $pole-top-width;
+        height: $body-width;
+        width: $body-hand-length;
+        transform: rotate(-1 * $body-hand-translation);
+      }
+
+      &.hanging-man-spine {
+        top: $pole-rope-height + $face-height + $neck-height;
+        left: $pole-margin + $pole-top-width;
+        width: $body-width;
+        height: $spine-height;
+      }
+
+      &.hanging-man-leg-left {
+        top: $pole-rope-height + $face-height + $neck-height + $spine-height - $body-width - $penis-length;
+        left: $pole-margin + $pole-top-width - $body-leg-length + 2 * $body-width;
+        height: $body-width;
+        width: $body-leg-length;
+        transform: rotate($body-leg-translation);
+      }
+
+      &.hanging-man-leg-right {
+        top: $pole-rope-height + $face-height + $neck-height + $spine-height - $body-width - $penis-length;
+        left: $pole-margin + $pole-top-width - $body-width;
+        height: $body-width;
+        width: $body-leg-length;
+        transform: rotate(-1 * $body-leg-translation);
+      }
     }
   }
 }
