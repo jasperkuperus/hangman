@@ -2,7 +2,33 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.hangman-container {
+.app-container {
   display: flex;
   justify-content: center;
+
+  .space-to-continue {
+    margin-top: 20px;
+    font-size: 80%;
+  }
+
+  .hangman-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .game-done {
+    margin-top: 50px;
+
+    h1 {
+      text-align: center;
+      font-weight: 400;
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 300;
+    }
+  }
 }

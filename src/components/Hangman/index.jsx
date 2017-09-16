@@ -46,6 +46,7 @@ class Hangman extends Component {
   createInitialState(word) {
     return {
       word,
+      failure: false,
       letters: word.split('').map(letter => letter.toLowerCase()),
       guesses: [],
     };

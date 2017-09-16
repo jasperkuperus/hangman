@@ -14,7 +14,7 @@ class HangingMan extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { errors, onFailure} = this.props;
+    const { errors, onFailure } = this.props;
 
     if (prevProps.errors !== errors && errors >= 6 && onFailure) {
       onFailure();
@@ -44,6 +44,6 @@ class HangingMan extends Component {
       </div>
     );
   }
-};
+}
 
 export default HangingMan;
