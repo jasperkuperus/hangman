@@ -3,40 +3,53 @@
   height: 400px;
   position: relative;
 
+  $pole-width: 4px;
+  $pole-margin: 40px;
+  $pole-top-width: 150px;
+
   .hanging-man-part {
     position: absolute;
     background-color: black;
 
     &.invisible {
-      display: none;
-    }
-
-    &.hanging-man-top {
-      top: 0;
-      left: 0;
-      width: 150px;
-      height: 2px;
+      background-color: rgb(235, 235, 235);
     }
 
     &.hanging-man-rope {
       top: 0;
-      left: 150px;
-      width: 2px;
+      left: $pole-margin + $pole-top-width;
+      width: $pole-width;
       height: 25px;
     }
 
-    &.hanging-man-pole {
+    &.hanging-man-top {
       top: 0;
-      bottom: 0;
-      left: 0;
-      width: 2px;
+      left: $pole-margin;
+      width: $pole-top-width;
+      height: $pole-width;
+    }
+
+    &.hanging-man-stut {
+      top: $pole-width;
+      left: $pole-margin + $pole-width + 35px;
+      height: $pole-width;
+      width: 50px;
+      transform: rotate(135deg);
+      transform-origin: 0 0;
+    }
+
+    &.hanging-man-pole {
+      top: $pole-width;
+      bottom: $pole-width;
+      left: $pole-margin;
+      width: $pole-width;
     }
 
     &.hanging-man-base {
       bottom: 0;
       left: 0;
-      right: 50px;
-      height: 2px;
+      right: 0;
+      height: $pole-width;
     }
   }
 }
