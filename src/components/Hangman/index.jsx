@@ -8,7 +8,15 @@ import Word from '../Word';
 class Hangman extends Component {
   static propTypes = {
     word: PropTypes.string.isRequired,
-    onSuccess: PropTypes.func.isRequired,
+    showWordOnFailure: PropTypes.bool,
+    onSuccess: PropTypes.func,
+    onFailure: PropTypes.func,
+  };
+
+  static defaultProps = {
+    showWordOnFailure: true,
+    onSuccess: null,
+    onFailure: null,
   };
 
   constructor(props) {
@@ -17,6 +25,7 @@ class Hangman extends Component {
     this.state = this.createInitialState(props.word);
 
     this.keyListener = this.keyListener.bind(this);
+    this.handleFailure = this.handleFailure.bind(this);
   }
 
   componentDidMount() {
@@ -43,16 +52,25 @@ class Hangman extends Component {
   }
 
   keyListener(event) {
-    const { letters } = this.state;
+    const { letters, guesses } = this.state;
+    const key = event.key.toLowerCase();
 
-    if (event.keyCode >= 65 && event.keyCode <= 90) {
-      const newGuesses = this.state.guesses.concat([event.key.toLowerCase()]);
+    if (event.keyCode >= 65 && event.keyCode <= 90 && !guesses.includes(key)) {
+      const newGuesses = guesses.concat([key]);
       this.setState({ guesses: newGuesses });
 
-      if (_.difference(letters, newGuesses).length === 0) {
+      if (_.difference(letters, newGuesses).length === 0 && this.props.onSuccess) {
         this.props.onSuccess();
       }
     }
+  }
+
+  handleFailure() {
+    if (this.props.onFailure) {
+      this.props.onFailure();
+    }
+
+    this.setState({ failure: true });
   }
 
   calculateErrors() {
@@ -61,14 +79,19 @@ class Hangman extends Component {
 
   render() {
     const word = this.props.word.toLowerCase();
-    const { guesses } = this.state;
+    const { guesses, failure } = this.state;
+    const { showWordOnFailure } = this.props;
 
     return (
       <div className="hangman">
-        <HangingMan errors={this.calculateErrors()} />
+        <HangingMan
+          errors={this.calculateErrors()}
+          onFailure={this.handleFailure}
+        />
 
         <Word
           word={word}
+          show={failure && showWordOnFailure}
           guessedLetters={guesses}
         />
 
