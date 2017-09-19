@@ -2,7 +2,7 @@
   "name": "hangman",
   "version": "1.0.0",
   "description": "Simple game of Hangman",
-  "private": true,
+  "license": "MIT",
   "author": "Jasper Kuperus",
   "dependencies": {
     "classnames": "^2.2.5",
