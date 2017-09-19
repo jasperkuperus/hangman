@@ -1,5 +1,5 @@
 export default [
-  'jorrit',
-  'afgestudeerd',
-  'held',
+  'hangman',
+  'react',
+  'yay',
 ];
