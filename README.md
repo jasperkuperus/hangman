@@ -5,6 +5,7 @@ Simple game of Hangman built with React.
 If you just want to see and run the game, run these commands:
 
 ```
+$ npm install
 $ webpack
 $ cd dist
 $ python3 -m http.server
@@ -16,6 +17,7 @@ This will start an HTTP server in the dist folder on port `8000`.
 Want to develop? Use the following npm script:
 
 ```
+$ npm install
 $ npm run dev
 ```
 
