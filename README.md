@@ -11,7 +11,7 @@ $ cd dist
 $ python3 -m http.server
 ```
 
-This will start an HTTP server in the dist folder on port `8000`.
+This will start an HTTP server in the dist folder on port `8000`. Don't have `python3`? Just start your favorite HTTP server in this folder.
 
 ## Development
 Want to develop? Use the following npm script:
