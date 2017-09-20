@@ -9,7 +9,7 @@
   $pole-rope-height: 25px;
 
   $face-width: 60px;
-  $face-height: 60px;
+  $face-height: 59px;
 
   $body-width: $pole-width;
   $neck-height: 15px;
@@ -81,7 +81,7 @@
 
     &.hanging-man-face {
       top: $pole-rope-height;
-      left: $pole-margin + $pole-top-width - ($face-width / 2);
+      left: $pole-margin + $pole-top-width - ($face-width / 2) + ($pole-width / 2);
     }
 
     &.body-part {
